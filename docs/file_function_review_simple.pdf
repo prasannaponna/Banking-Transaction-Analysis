@@ -1,0 +1,1210 @@
+%PDF-1.4
+6 0 obj
+<< /Length 2851 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+() Tj
+T*
+/F2 16 Tf
+(Banking Transaction Analysis - Simple File Review) Tj
+T*
+/F1 10 Tf
+(This is a simple review of every project file: who owns it, what it does, and the main) Tj
+T*
+(functions.) Tj
+T*
+(Roles are based on docs/team_roles.md.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+/F2 13 Tf
+(Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(.streamlit/config.toml) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Configuration/text file.) Tj
+T*
+/F1 9 Tf
+(Contains: [theme]; base = "light"; primaryColor = "#0F766E"; backgroundColor = "#F4F7FB") Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(backend/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(backend/account_service.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Account CRUD \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Main functions: create_account, get_account, get_all_accounts, get_accounts_by_customer,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(count_accounts, search_accounts, update_account, deactivate_account, activate_account,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(count_transactions, delete_account, _transactions_snapshot, get_deleted_accounts,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(restore_account, purge_deleted_account) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(backend/balance_service.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Balance calculation \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Main functions: calculate_balance, get_account_balance, recalculate_balance_in_cursor,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(get_total_balance, find_balance_mismatches) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(backend/customer_service.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Customer CRUD \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Main functions: create_customer, get_customer, get_all_customers, count_customers,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(search_customers, update_customer, delete_customer) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(backend/db_connection.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Database connection helpers \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Main functions: _translate_error, get_connection, get_cursor, fetch_all, fetch_one, execute,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(check_connection) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(backend/transaction_service.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Transaction operations: deposit, withdrawal, CRUD, search and filters \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Main functions: apply_transaction, add_transaction, deposit, withdraw, get_transaction,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(get_transactions, search_transactions, update_transaction, delete_transaction, get_categories,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(get_date_range) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(requirements.txt) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 1 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Length 3178 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(Configuration/text file.) Tj
+T*
+/F1 9 Tf
+(Contains: streamlit>=1.36.0; pandas>=2.0.0; numpy>=1.24.0; plotly>=5.18.0) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(run.bat) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Configuration/text file.) Tj
+T*
+/F1 9 Tf
+(Contains: @echo off; REM ============================================================; REM) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(Banking Transaction Analysis - launcher; REM  Double-click this file to start the dashboard.) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(tests/test_transactions.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Transaction logic tests: deposit, withdrawal, balance rules \(needs MySQL\).) Tj
+T*
+/F1 9 Tf
+(Main functions: test_opening_balance_is_a_deposit, test_deposit_increases_balance,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_withdrawal_decreases_balance, test_insufficient_balance_rejected,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_invalid_amount_rejected, test_invalid_type_account_and_date_rejected,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_inactive_account_rejected, test_balance_calculation_matches_stored_balance,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_update_and_delete_recalculate_balance,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_update_that_makes_balance_negative_is_rejected, test_filter_and_search,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_sql_injection_text_is_harmless) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(tests/test_validators.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Tests for utils/validators.py \(no database needed\).) Tj
+T*
+/F1 9 Tf
+(Main functions: test_valid_amount_is_rounded_decimal, test_invalid_amounts_rejected,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_transaction_type, test_date_validation, test_phone_and_email,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_name_account_number_and_id, test_account_type_and_status, test_indian_currency_format) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(utils/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(utils/helpers.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Small helper functions and constants used in many places.) Tj
+T*
+/F1 9 Tf
+(Main functions: format_inr, generate_reference_number, generate_account_number) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(utils/validators.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Input validators \(shared by backend, tests and dashboard\).) Tj
+T*
+/F1 9 Tf
+(Main functions: validate_id, validate_name, validate_phone, validate_email, validate_address,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(validate_account_number, validate_account_type, validate_account_status,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(validate_transaction_type, validate_amount, validate_date, validate_category,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(validate_description) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 13 Tf
+(Member 2 - Database) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(database/README.md) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Markdown documentation.) Tj
+T*
+/F1 9 Tf
+(Sections: Database \(Member 2\); Run it in SQLyog; Tables) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(database/queries.sql) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 2 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Length 3659 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(SQL script with 13 statements.) Tj
+T*
+/F1 9 Tf
+(Contains: -- ===================================================================; -- 1. All) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(customers with the number of accounts they own; -- 2. Accounts with owner name and balance; --) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(3. Latest 20 transactions; -- 4. Total deposits and withdrawals; -- 5. Balance of each account) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(calculated from its transactions; -- 6. Monthly expenses; -- 7. Category-wise expenses) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(database/sample_data.sql) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(SQL script with 6 statements.) Tj
+T*
+/F1 9 Tf
+(Contains: -- ===================================================================; INSERT INTO) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(customers \(name, phone, email, address\) VALUES; -- balance starts at 0; it is recalculated from) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(transactions at the bottom; INSERT INTO transactions \(account_id, transaction_date,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(transaction_ty; -- Recalculate every account balance from its transactions) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(database/schema.sql) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(SQL script with 10 statements.) Tj
+T*
+/F1 9 Tf
+(Contains: -- ===================================================================; USE) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(banking_db; DROP TABLE IF EXISTS deleted_accounts; DROP TABLE IF EXISTS transactions; DROP) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(TABLE IF EXISTS accounts; DROP TABLE IF EXISTS customers; --) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(-------------------------------------------------------------------; --) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(-------------------------------------------------------------------) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(tests/test_database.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Database tests: connection, tables and customer/account CRUD \(needs MySQL\).) Tj
+T*
+/F1 9 Tf
+(Main functions: test_database_connection, test_tables_exist,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_customer_create_read_update_search_delete, test_duplicate_customer_rejected,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_invalid_customer_input_rejected, test_account_creation_and_duplicate_number,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_account_for_missing_customer_rejected,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_deactivate_account_and_customer_delete_blocked,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_delete_account_requires_history_confirmation,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_deleted_account_is_archived_and_can_be_restored,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_purge_deleted_account_removes_it_permanently) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 13 Tf
+(Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(analysis/monthly_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Month-wise analysis \(MEMBER 3\). Months are shown as 'YYYY-MM'.) Tj
+T*
+/F1 9 Tf
+(Main functions: _with_month, _monthly_total, monthly_expenses, monthly_income, monthly_summary) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/report_generator.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Build report tables and CSV bytes for download \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Main functions: transaction_report, monthly_spending_report, category_spending_report,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(unusual_transaction_report, build_report, to_csv_bytes, report_file_name) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/spending_analysis.py) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 3 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Length 3109 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Category-wise spending and income vs expense \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Main functions: category_expenses, top_spending_categories, income_vs_expense, account_spending) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/transaction_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Core transaction analysis with Pandas / NumPy \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Main functions: prepare_dataframe, load_transactions, total_deposits, total_withdrawals,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(calculate_balance, average_transaction, largest_transaction, transaction_statistics) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/unusual_transactions.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Unusual transaction detection \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Main functions: _rule_high_vs_normal, _rule_high_amount, _rule_frequency, unusual_transactions) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(tests/test_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Analysis tests with a small hand-made DataFrame \(no database needed\).) Tj
+T*
+/F1 9 Tf
+(Main functions: make_df, make_history_df, test_totals_and_balance, test_average_and_largest,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_statistics, test_monthly_analysis, test_category_analysis_and_income_vs_expense,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_empty_dataframe_does_not_crash, test_unusual_amount_much_higher_than_normal,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_unusual_amount_threshold_is_configurable, test_unusual_frequency_rule,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(test_csv_export_is_bytes) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 13 Tf
+(Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/app.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Streamlit entry point \(MEMBER 4\).   Run from the project root with:) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/assets/style.css) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Stylesheet with 123 CSS rules.) Tj
+T*
+/F1 9 Tf
+(Rules: .brand-name; .lp-hero > *; .section-title; .lp-card:hover; [data-testid="stForm"]; :root) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/auth.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Demo authentication helpers for the Banking Transaction Analysis app.) Tj
+T*
+/F1 9 Tf
+(Main functions: is_authenticated, current_user, logout, attempt_login) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/components/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/components/charts.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Plotly chart builders \(MEMBER 4\). Each function takes a DataFrame and returns a figure.) Tj
+T*
+/F1 9 Tf
+(Main functions: _style, _empty_figure, monthly_expense_chart, income_vs_expense_chart,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(category_pie_chart, category_bar_chart, monthly_net_chart, account_comparison_chart,) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 4 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Length 2580 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F1 9 Tf
+(amount_histogram) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/components/tables.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Shared Streamlit widgets: tables, filters, error handling \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: run_safely, records_to_df, show_table, show_chart, show_money, account_options,) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(transaction_filters, unusual_settings, show_unusual_transactions) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/landing.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Public landing page shown before the demo login portal.) Tj
+T*
+/F1 9 Tf
+(Main functions: _stats_html, _feature_card, render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/login.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Separate demo login portal for the Banking Transaction Analysis app.) Tj
+T*
+/F1 9 Tf
+(Main functions: _tame_password_manager, render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/accounts.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Account management page \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Analysis page: statistics, monthly, category, income vs expense, unusual \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/customers.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Customer management page \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: _customer_label, render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/dashboard.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Main dashboard page: KPI cards, charts, recent transactions, alerts \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/reports.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Report page: preview and CSV download \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/transactions.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Transaction management page: view/search/filter, add, edit, delete \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Main functions: _view_tab, _add_tab, _edit_tab, render) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/theme.py) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 5 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Length 2582 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Theme helpers: loads the custom CSS and renders small HTML components.) Tj
+T*
+/F1 9 Tf
+(Main functions: apply_theme, page_header, section_title, kpi_card) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 13 Tf
+(Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(.gitignore) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Configuration/text file.) Tj
+T*
+/F1 9 Tf
+(Contains: # secrets; .env; # python; venv/) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(README.md) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Markdown documentation.) Tj
+T*
+/F1 9 Tf
+(Sections: Banking Transaction Analysis System; Features; Technology stack; Architecture;) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(Database structure; Folder structure; Team responsibilities; Installation) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(docs/architecture.md) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Markdown documentation.) Tj
+T*
+/F1 9 Tf
+(Sections: Architecture; Rules; Key design decisions) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(docs/database_design.md) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Markdown documentation.) Tj
+T*
+/F1 9 Tf
+(Sections: Database design \(banking_db\); Entities and relationships; customers; accounts;) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(transactions; Normalization) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(docs/file_function_review.pdf) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Configuration/text file.) Tj
+T*
+/F1 9 Tf
+(Contains: %PDF-1.4; 6 0 obj; << /Length 2560 >>; stream) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(docs/project_workflow.md) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Markdown documentation.) Tj
+T*
+/F1 9 Tf
+(Sections: Project workflow \(Git + GitHub\); Branches; One-time setup \(Member 1\); Everyone else;) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(Keeping your branch up to date; How Member 1 integrates the branches) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(docs/team_roles.md) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Markdown documentation.) Tj
+T*
+/F1 9 Tf
+(Sections: Team roles; Interfaces between members) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(tests/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Python module.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(tests/conftest.py) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Does:) Tj
+T*
+/F1 10 Tf
+(Shared pytest setup. Database tests are skipped automatically when MySQL is not reachable.) Tj
+T*
+/F1 9 Tf
+(Main functions: unique_phone, unique_email, require_database, customer_id, account_id) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 6 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Length 675 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F2 13 Tf
+(Quick role summary) Tj
+T*
+/F1 10 Tf
+(  - Member 1 - Backend + Integration: database connection, CRUD services, balance logic, utils,) Tj
+T*
+(    requirements, launcher.) Tj
+T*
+(  - Member 2 - Database: schema, sample data, SQL queries, database README.) Tj
+T*
+(  - Member 3 - Data Analysis: Pandas/NumPy analysis, unusual transaction rules, reports,) Tj
+T*
+(    analysis tests.) Tj
+T*
+(  - Member 4 - UI + Visualization: Streamlit pages, Plotly charts, filters, tables,) Tj
+T*
+(    login/landing.) Tj
+T*
+(  - Shared: docs, README, tests helpers.) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 7 of 7  |  Simple File Review) Tj ET
+endstream
+endobj
+2 0 obj
+<< /Type /Pages /Kids [13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R] /Count 7 >>
+endobj
+
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 7 0 R >>
+endobj
+
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 8 0 R >>
+endobj
+
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 9 0 R >>
+endobj
+
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 10 0 R >>
+endobj
+
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 11 0 R >>
+endobj
+
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 12 0 R >>
+endobj
+
+xref
+0 19
+0000000000 65535 f 
+0000000009 00000 n 
+0000002912 00000 n 
+0000006142 00000 n 
+0000009853 00000 n 
+0000013014 00000 n 
+0000015647 00000 n 
+0000018282 00000 n 
+0000019009 00000 n 
+0000019110 00000 n 
+0000019160 00000 n 
+0000019231 00000 n 
+0000019307 00000 n 
+0000019445 00000 n 
+0000019583 00000 n 
+0000019721 00000 n 
+0000019859 00000 n 
+0000019998 00000 n 
+0000020137 00000 n 
+trailer
+<< /Size 19 /Root 1 0 R >>
+startxref
+20276
+%%EOF

@@ -1,0 +1,2177 @@
+%PDF-1.4
+6 0 obj
+<< /Length 2560 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F2 18 Tf
+(Banking Transaction Analysis System) Tj
+T*
+/F1 10 Tf
+/F2 12 Tf
+(File, Function and Role Review for Project Review) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+(This document lists every project file, its responsible role, a short description, and the) Tj
+T*
+(functions/classes it contains. It is intended for review and viva/demo preparation.) Tj
+T*
+(Roles are based on docs/team_roles.md. Shared files are owned by all members.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(Role-wise file count) Tj
+T*
+/F1 10 Tf
+(  - Member 1 - Backend + Integration: 14 files) Tj
+T*
+(  - Member 2 - Database: 5 files) Tj
+T*
+(  - Member 3 - Data Analysis: 7 files) Tj
+T*
+(  - Member 4 - UI + Visualization: 17 files) Tj
+T*
+(  - Shared \(all members\): 9 files) Tj
+T*
+() Tj
+T*
+/F2 14 Tf
+(Contents) Tj
+T*
+/F1 10 Tf
+(  - Member 1 - Backend + Integration) Tj
+T*
+(  - Member 2 - Database) Tj
+T*
+(  - Member 3 - Data Analysis) Tj
+T*
+(  - Member 4 - UI + Visualization) Tj
+T*
+(  - Shared \(all members\)) Tj
+T*
+() Tj
+T*
+/F2 15 Tf
+(Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(.streamlit/config.toml) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Configuration file.) Tj
+T*
+(  - [theme]) Tj
+T*
+(  - base = "light") Tj
+T*
+(  - primaryColor = "#0F766E") Tj
+T*
+(  - backgroundColor = "#F4F7FB") Tj
+T*
+(  - secondaryBackgroundColor = "#FFFFFF") Tj
+T*
+(  - textColor = "#0F172A") Tj
+T*
+(  - font = "sans serif") Tj
+T*
+(  - [server]) Tj
+T*
+(  - headless = false) Tj
+T*
+(  - [browser]) Tj
+T*
+(  - gatherUsageStats = false) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(backend/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(backend/account_service.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Account CRUD \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, datetime, json, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - create_account\(customer_id, account_type, opening_balance, account_number\) - Open a new account) Tj
+T*
+(    for an existing customer and return the new account_id.) Tj
+T*
+(  - get_account\(account_id\)) Tj
+T*
+(  - get_all_accounts\(status\) - All accounts, or only 'ACTIVE' / 'INACTIVE' ones.) Tj
+T*
+(  - get_accounts_by_customer\(customer_id\)) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 1 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+7 0 obj
+<< /Length 3546 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(  - count_accounts\(\)) Tj
+T*
+(  - search_accounts\(keyword\) - Search by account number, customer name, account type or status.) Tj
+T*
+(  - update_account\(account_id, account_type, status\) - Change the account type and/or status. The) Tj
+T*
+(    balance can only change via transactions.) Tj
+T*
+(  - deactivate_account\(account_id\) - Accounts are deactivated, not deleted, so the transaction) Tj
+T*
+(    history is kept.) Tj
+T*
+(  - activate_account\(account_id\)) Tj
+T*
+(  - count_transactions\(account_id\) - Number of transactions recorded for an account \(0 is safe to) Tj
+T*
+(    delete directly\).) Tj
+T*
+(  - delete_account\(account_id, delete_transactions\) - Move an account to the recycle bin and delete) Tj
+T*
+(    it \(it can be restored later\).) Tj
+T*
+(  - _transactions_snapshot\(cursor, account_id\) - JSON copy of an account's transactions, stored in) Tj
+T*
+(    the recycle bin for restore.) Tj
+T*
+(  - get_deleted_accounts\(limit\) - Recently deleted accounts \(newest first\) for the 'Recently) Tj
+T*
+(    Deleted' tab.) Tj
+T*
+(  - restore_account\(archive_id\) - Put a deleted account back, together with its transactions.) Tj
+T*
+(  - purge_deleted_account\(archive_id\) - Remove one entry from the recycle bin permanently \(the) Tj
+T*
+(    account cannot come back\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(backend/balance_service.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Balance calculation \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - calculate_balance\(account_id\) - Balance worked out from the transactions \(deposits -) Tj
+T*
+(    withdrawals\).) Tj
+T*
+(  - get_account_balance\(account_id\) - Balance stored in the accounts table.) Tj
+T*
+(  - recalculate_balance_in_cursor\(cursor, account_id\) - Recalculate the balance from transactions) Tj
+T*
+(    and save it to the accounts table.) Tj
+T*
+(  - get_total_balance\(\) - Sum of the balances of all ACTIVE accounts.) Tj
+T*
+(  - find_balance_mismatches\(\) - List accounts whose stored balance differs from the transaction) Tj
+T*
+(    total \(data check\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(backend/customer_service.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Customer CRUD \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - create_customer\(name, phone, email, address\) - Add a customer and return the new customer_id.) Tj
+T*
+(  - get_customer\(customer_id\) - Return one customer as a dict, or None if not found.) Tj
+T*
+(  - get_all_customers\(\)) Tj
+T*
+(  - count_customers\(\)) Tj
+T*
+(  - search_customers\(keyword\) - Search by name, phone, email or customer ID.) Tj
+T*
+(  - update_customer\(customer_id, name, phone, email, address\) - Update only the fields that are) Tj
+T*
+(    given \(not None\). Returns True if a row changed.) Tj
+T*
+(  - delete_customer\(customer_id\) - Delete a customer. Customers who still own accounts cannot be) Tj
+T*
+(    deleted.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(backend/db_connection.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Database connection helpers \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Imports: contextlib, dotenv, logging, mysql, os, pathlib) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Classes:) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 2 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Length 3778 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(  - DatabaseError - Friendly database error. str\(error\) is safe to show to the user.) Tj
+T*
+(  - DatabaseConnectionError - MySQL is not reachable or the login details are wrong.) Tj
+T*
+(  - DuplicateEntryError - A UNIQUE value \(phone, email, account number...\) already exists.) Tj
+T*
+(  - RelatedRecordsError - The row is linked to other rows \(foreign key\), so it cannot be) Tj
+T*
+(    changed/deleted.) Tj
+T*
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _translate_error\(error\) - Convert a raw MySQL error into one of our friendly errors.) Tj
+T*
+(  - get_connection\(\) - Open a new MySQL connection using environment variables.) Tj
+T*
+(  - get_cursor\(commit\) - Yield a dictionary cursor. Rolls back automatically on any error.) Tj
+T*
+(  - fetch_all\(sql, params\) - Run a SELECT and return a list of dictionaries.) Tj
+T*
+(  - fetch_one\(sql, params\) - Run a SELECT and return one dictionary \(or None\).) Tj
+T*
+(  - execute\(sql, params\) - Run INSERT/UPDATE/DELETE, commit, and return \(last_insert_id,) Tj
+T*
+(    affected_rows\).) Tj
+T*
+(  - check_connection\(\) - Return True if the database can be reached \(used at dashboard start-up\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(backend/transaction_service.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Transaction operations: deposit, withdrawal, CRUD, search and filters \(MEMBER 1\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, datetime, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Classes:) Tj
+T*
+/F1 10 Tf
+(  - InsufficientBalanceError - Withdrawal is bigger than the money available in the account.) Tj
+T*
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - apply_transaction\(cursor, account_id, transaction_type, amount, transaction_date, category,) Tj
+T*
+(    description, reference_number\) - Core deposit/withdrawal logic. Works on an open cursor so that) Tj
+T*
+(    callers) Tj
+T*
+(  - add_transaction\(account_id, transaction_type, amount, transaction_date, category, description,) Tj
+T*
+(    reference_number\) - Validate the input, then record a deposit or withdrawal. Returns) Tj
+T*
+(    transaction_id.) Tj
+T*
+(  - deposit\(account_id, amount, category, description, transaction_date\)) Tj
+T*
+(  - withdraw\(account_id, amount, category, description, transaction_date\)) Tj
+T*
+(  - get_transaction\(transaction_id\)) Tj
+T*
+(  - get_transactions\(account_id, start_date, end_date, transaction_type, category, min_amount,) Tj
+T*
+(    max_amount, keyword, limit\) - View / filter / search transactions \(newest first\). All arguments) Tj
+T*
+(    are optional.) Tj
+T*
+(  - search_transactions\(keyword\) - Search description, reference number, category or account) Tj
+T*
+(    number.) Tj
+T*
+(  - update_transaction\(transaction_id, transaction_type, amount, transaction_date, category,) Tj
+T*
+(    description\) - Edit a transaction \(the account cannot be changed\). The balance is recalculated) Tj
+T*
+(  - delete_transaction\(transaction_id\) - Delete a transaction and fix the balance \(rejected if the) Tj
+T*
+(    balance would go negative\).) Tj
+T*
+(  - get_categories\(\) - Distinct categories currently used in the transactions table.) Tj
+T*
+(  - get_date_range\(\) - \(earliest_date, latest_date\) of all transactions, or None if there are none.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(requirements.txt) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Text/dependency file.) Tj
+T*
+(  - streamlit>=1.36.0) Tj
+T*
+(  - pandas>=2.0.0) Tj
+T*
+(  - numpy>=1.24.0) Tj
+T*
+(  - plotly>=5.18.0) Tj
+T*
+(  - mysql-connector-python>=8.0.33) Tj
+T*
+(  - python-dotenv>=1.0.0) Tj
+T*
+(  - pytest>=7.4.0) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 3 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+9 0 obj
+<< /Length 3001 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+() Tj
+T*
+/F2 11 Tf
+(run.bat) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Launcher script.) Tj
+T*
+/F2 10 Tf
+(Commands:) Tj
+T*
+/F1 10 Tf
+(  - @echo off) Tj
+T*
+(  - REM ============================================================) Tj
+T*
+(  - REM  Banking Transaction Analysis - launcher) Tj
+T*
+(  - REM  Double-click this file to start the dashboard.) Tj
+T*
+(  - REM  Press Ctrl+C in this window \(or close it\) to stop.) Tj
+T*
+(  - REM ============================================================) Tj
+T*
+(  - title Banking Transaction Analysis) Tj
+T*
+(  - cd /d "%~dp0") Tj
+T*
+(  - set "PYTHON=python") Tj
+T*
+(  - if exist ".venv\\Scripts\\python.exe" set "PYTHON=.venv\\Scripts\\python.exe") Tj
+T*
+(  - if exist "venv\\Scripts\\python.exe" set "PYTHON=venv\\Scripts\\python.exe") Tj
+T*
+(  - where "%PYTHON%" >nul 2>nul) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(tests/test_transactions.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Transaction logic tests: deposit, withdrawal, balance rules \(needs MySQL\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, datetime, decimal, pytest, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - test_opening_balance_is_a_deposit\(account_id\)) Tj
+T*
+(  - test_deposit_increases_balance\(account_id\)) Tj
+T*
+(  - test_withdrawal_decreases_balance\(account_id\)) Tj
+T*
+(  - test_insufficient_balance_rejected\(account_id\)) Tj
+T*
+(  - test_invalid_amount_rejected\(account_id, amount\)) Tj
+T*
+(  - test_invalid_type_account_and_date_rejected\(account_id\)) Tj
+T*
+(  - test_inactive_account_rejected\(account_id\)) Tj
+T*
+(  - test_balance_calculation_matches_stored_balance\(account_id\)) Tj
+T*
+(  - test_update_and_delete_recalculate_balance\(account_id\)) Tj
+T*
+(  - test_update_that_makes_balance_negative_is_rejected\(account_id\)) Tj
+T*
+(  - test_filter_and_search\(account_id\)) Tj
+T*
+(  - test_sql_injection_text_is_harmless\(account_id\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(tests/test_validators.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Tests for utils/validators.py \(no database needed\).) Tj
+T*
+/F1 9 Tf
+(Imports: datetime, decimal, pytest, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - test_valid_amount_is_rounded_decimal\(\)) Tj
+T*
+(  - test_invalid_amounts_rejected\(bad\)) Tj
+T*
+(  - test_transaction_type\(\)) Tj
+T*
+(  - test_date_validation\(\)) Tj
+T*
+(  - test_phone_and_email\(\)) Tj
+T*
+(  - test_name_account_number_and_id\(\)) Tj
+T*
+(  - test_account_type_and_status\(\)) Tj
+T*
+(  - test_indian_currency_format\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(utils/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 4 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+10 0 obj
+<< /Length 2885 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+() Tj
+T*
+/F2 11 Tf
+(utils/helpers.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Small helper functions and constants used in many places.) Tj
+T*
+/F1 9 Tf
+(Imports: datetime, decimal, uuid) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - format_inr\(amount\) - Format a number the Indian way: 1234567.5 -> 'Rs.12,34,567.50'.) Tj
+T*
+(  - generate_reference_number\(\) - Unique reference such as TXN20260325A1B2C3D4.) Tj
+T*
+(  - generate_account_number\(\) - Random 12-digit account number \(the DB UNIQUE key rejects the rare) Tj
+T*
+(    duplicate\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(utils/validators.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 1 - Backend + Integration) Tj
+T*
+/F1 10 Tf
+(Purpose: Input validators \(shared by backend, tests and dashboard\).) Tj
+T*
+/F1 9 Tf
+(Imports: datetime, decimal, re) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Classes:) Tj
+T*
+/F1 10 Tf
+(  - ValidationError - Raised when user input or a business rule is not acceptable.) Tj
+T*
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - validate_id\(value, field_name\) - Return a positive integer ID.) Tj
+T*
+(  - validate_name\(name\)) Tj
+T*
+(  - validate_phone\(phone\) - Accepts '9876543210', '+91 98765 43210', '98765-43210'. Returns 10) Tj
+T*
+(    digits.) Tj
+T*
+(  - validate_email\(email\)) Tj
+T*
+(  - validate_address\(address\)) Tj
+T*
+(  - validate_account_number\(account_number\)) Tj
+T*
+(  - validate_account_type\(account_type\)) Tj
+T*
+(  - validate_account_status\(status\)) Tj
+T*
+(  - validate_transaction_type\(transaction_type\)) Tj
+T*
+(  - validate_amount\(amount, allow_zero\) - Return the amount as a Decimal rounded to 2 places.) Tj
+T*
+(  - validate_date\(value, allow_future\) - Return a datetime. Accepts datetime, date or 'YYYY-MM-DD[) Tj
+T*
+(    HH:MM[:SS]]' text.) Tj
+T*
+(  - validate_category\(category\)) Tj
+T*
+(  - validate_description\(description\)) Tj
+T*
+() Tj
+T*
+/F2 15 Tf
+(Member 2 - Database) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(database/README.md) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 2 - Database) Tj
+T*
+/F1 10 Tf
+(Purpose: Markdown documentation.) Tj
+T*
+/F2 10 Tf
+(Sections:) Tj
+T*
+/F1 10 Tf
+(  - Database \(Member 2\)) Tj
+T*
+(  -   Run it in SQLyog) Tj
+T*
+(  -   Tables) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(database/queries.sql) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 2 - Database) Tj
+T*
+/F1 10 Tf
+(Purpose: SQL script \(13 statements\).) Tj
+T*
+/F2 10 Tf
+(Statements:) Tj
+T*
+/F1 10 Tf
+(  - -- =====================================================================) Tj
+T*
+(  - -- 1. All customers with the number of accounts they own) Tj
+T*
+(  - -- 2. Accounts with owner name and balance) Tj
+T*
+(  - -- 3. Latest 20 transactions) Tj
+T*
+(  - -- 4. Total deposits and withdrawals) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 5 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+11 0 obj
+<< /Length 3296 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(  - -- 5. Balance of each account calculated from its transactions) Tj
+T*
+(  - -- 6. Monthly expenses) Tj
+T*
+(  - -- 7. Category-wise expenses) Tj
+T*
+(  - -- 8. Largest 10 transactions) Tj
+T*
+(  - -- 9. Search transactions by keyword) Tj
+T*
+(  - -- 10. Withdrawals above 50,000 \(simple large-transaction check\)) Tj
+T*
+(  - -- 11. Accounts with more than 5 transactions on one day \(busy days\)) Tj
+T*
+(  - -- 12. Average transaction amount per account) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(database/sample_data.sql) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 2 - Database) Tj
+T*
+/F1 10 Tf
+(Purpose: SQL script \(6 statements\).) Tj
+T*
+/F2 10 Tf
+(Statements:) Tj
+T*
+/F1 10 Tf
+(  - -- =====================================================================) Tj
+T*
+(  - INSERT INTO customers \(name, phone, email, address\) VALUES) Tj
+T*
+(  - -- balance starts at 0) Tj
+T*
+(  - it is recalculated from transactions at the bottom) Tj
+T*
+(  - INSERT INTO transactions \(account_id, transaction_date, transaction_type, amount, category,) Tj
+T*
+(    description, reference_number\) VALUES) Tj
+T*
+(  - -- Recalculate every account balance from its transactions) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(database/schema.sql) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 2 - Database) Tj
+T*
+/F1 10 Tf
+(Purpose: SQL script \(10 statements\).) Tj
+T*
+/F2 10 Tf
+(Statements:) Tj
+T*
+/F1 10 Tf
+(  - -- =====================================================================) Tj
+T*
+(  - USE banking_db) Tj
+T*
+(  - DROP TABLE IF EXISTS deleted_accounts) Tj
+T*
+(  - DROP TABLE IF EXISTS transactions) Tj
+T*
+(  - DROP TABLE IF EXISTS accounts) Tj
+T*
+(  - DROP TABLE IF EXISTS customers) Tj
+T*
+(  - -- ---------------------------------------------------------------------) Tj
+T*
+(  - -- ---------------------------------------------------------------------) Tj
+T*
+(  - -- ---------------------------------------------------------------------) Tj
+T*
+(  - -- ---------------------------------------------------------------------) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(tests/test_database.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 2 - Database) Tj
+T*
+/F1 10 Tf
+(Purpose: Database tests: connection, tables and customer/account CRUD \(needs MySQL\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, pytest, tests, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - test_database_connection\(\)) Tj
+T*
+(  - test_tables_exist\(\)) Tj
+T*
+(  - test_customer_create_read_update_search_delete\(\)) Tj
+T*
+(  - test_duplicate_customer_rejected\(customer_id\)) Tj
+T*
+(  - test_invalid_customer_input_rejected\(require_database\)) Tj
+T*
+(  - test_account_creation_and_duplicate_number\(customer_id\)) Tj
+T*
+(  - test_account_for_missing_customer_rejected\(require_database\)) Tj
+T*
+(  - test_deactivate_account_and_customer_delete_blocked\(account_id, customer_id\)) Tj
+T*
+(  - test_delete_account_requires_history_confirmation\(account_id\) - An account with transactions is) Tj
+T*
+(    only deleted when history deletion is confirmed.) Tj
+T*
+(  - test_deleted_account_is_archived_and_can_be_restored\(account_id\) - Deleting moves the account) Tj
+T*
+(    to the recycle bin; restoring brings back its history.) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 6 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+12 0 obj
+<< /Length 3186 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(  - test_purge_deleted_account_removes_it_permanently\(account_id\)) Tj
+T*
+() Tj
+T*
+/F2 15 Tf
+(Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(analysis/monthly_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+(Purpose: Month-wise analysis \(MEMBER 3\). Months are shown as 'YYYY-MM'.) Tj
+T*
+/F1 9 Tf
+(Imports: pandas) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _with_month\(df\)) Tj
+T*
+(  - _monthly_total\(df, transaction_type, column_name\)) Tj
+T*
+(  - monthly_expenses\(df\) - Total withdrawals per month -> columns: month, expense.) Tj
+T*
+(  - monthly_income\(df\) - Total deposits per month -> columns: month, income.) Tj
+T*
+(  - monthly_summary\(df\) - Income, expense and net for every month -> columns: month, income,) Tj
+T*
+(    expense, net.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(analysis/report_generator.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+(Purpose: Build report tables and CSV bytes for download \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, pandas) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - transaction_report\(df\) - All given transactions, newest first.) Tj
+T*
+(  - monthly_spending_report\(df\)) Tj
+T*
+(  - category_spending_report\(df\)) Tj
+T*
+(  - unusual_transaction_report\(df\)) Tj
+T*
+(  - build_report\(report_name, df\) - Return the DataFrame for one of REPORT_NAMES.) Tj
+T*
+(  - to_csv_bytes\(report_df\) - CSV as bytes with a BOM so Excel shows the Rs. sign correctly.) Tj
+T*
+(  - report_file_name\(report_name\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(analysis/spending_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+(Purpose: Category-wise spending and income vs expense \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, pandas) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - category_expenses\(df\) - Total withdrawals per category \(largest first\) -> columns: category,) Tj
+T*
+(    expense, transactions.) Tj
+T*
+(  - top_spending_categories\(df, top_n\)) Tj
+T*
+(  - income_vs_expense\(df\) - Dictionary with total_income, total_expense and net_balance.) Tj
+T*
+(  - account_spending\(df\) - Total income and expense of each account -> useful for comparing) Tj
+T*
+(    accounts.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(analysis/transaction_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+(Purpose: Core transaction analysis with Pandas / NumPy \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Imports: numpy, pandas) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - prepare_dataframe\(records\) - Turn a list of dicts \(or a DataFrame\) into a clean DataFrame with) Tj
+T*
+(    correct data types.) Tj
+T*
+(  - load_transactions\(\) - Fetch transactions from MySQL \(optionally filtered\) as a DataFrame.) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 7 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+13 0 obj
+<< /Length 2987 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(  - total_deposits\(df\)) Tj
+T*
+(  - total_withdrawals\(df\)) Tj
+T*
+(  - calculate_balance\(df\) - Deposits minus withdrawals of the given transactions.) Tj
+T*
+(  - average_transaction\(df\)) Tj
+T*
+(  - largest_transaction\(df\) - Return the largest transaction as a dict, or None if there is no) Tj
+T*
+(    data.) Tj
+T*
+(  - transaction_statistics\(df\) - count, sum, mean, median, min, max for all / deposits /) Tj
+T*
+(    withdrawals \(one row each\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(analysis/unusual_transactions.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+(Purpose: Unusual transaction detection \(MEMBER 3\).) Tj
+T*
+/F1 9 Tf
+(Imports: numpy, pandas) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _rule_high_vs_normal\(df, z_threshold\)) Tj
+T*
+(  - _rule_high_amount\(df, amount_threshold\)) Tj
+T*
+(  - _rule_frequency\(df, max_transactions, window_minutes\)) Tj
+T*
+(  - unusual_transactions\(df, z_threshold, amount_threshold, max_transactions, window_minutes\) -) Tj
+T*
+(    Return the flagged transactions with a `reason` column \(empty DataFrame if none\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(tests/test_analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 3 - Data Analysis) Tj
+T*
+/F1 10 Tf
+(Purpose: Analysis tests with a small hand-made DataFrame \(no database needed\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, pandas) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - make_df\(\)) Tj
+T*
+(  - make_history_df\(\) - 20 small daily withdrawals plus one huge one \(id 999\).) Tj
+T*
+(  - test_totals_and_balance\(\)) Tj
+T*
+(  - test_average_and_largest\(\)) Tj
+T*
+(  - test_statistics\(\)) Tj
+T*
+(  - test_monthly_analysis\(\)) Tj
+T*
+(  - test_category_analysis_and_income_vs_expense\(\)) Tj
+T*
+(  - test_empty_dataframe_does_not_crash\(\)) Tj
+T*
+(  - test_unusual_amount_much_higher_than_normal\(\)) Tj
+T*
+(  - test_unusual_amount_threshold_is_configurable\(\)) Tj
+T*
+(  - test_unusual_frequency_rule\(\)) Tj
+T*
+(  - test_csv_export_is_bytes\(\)) Tj
+T*
+() Tj
+T*
+/F2 15 Tf
+(Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/app.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Streamlit entry point \(MEMBER 4\).   Run from the project root with:) Tj
+T*
+/F1 9 Tf
+(Imports: backend, dashboard, pathlib, streamlit, sys) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/assets/style.css) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Stylesheet \(123 selectors\).) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 8 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+14 0 obj
+<< /Length 2067 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F2 10 Tf
+(Selectors:) Tj
+T*
+/F1 10 Tf
+(  - :root) Tj
+T*
+(  - html, body, [class*="css"], .stApp, button, input, textarea, select) Tj
+T*
+(  - .stApp) Tj
+T*
+(  - .block-container) Tj
+T*
+(  - header[data-testid="stHeader"]) Tj
+T*
+(  - #MainMenu, footer) Tj
+T*
+(  - h1, h2, h3, h4) Tj
+T*
+(  - h2, h3) Tj
+T*
+(  - section[data-testid="stSidebar"]) Tj
+T*
+(  - section[data-testid="stSidebar"] .block-container) Tj
+T*
+(  - [data-testid="stSidebarNav"] a) Tj
+T*
+(  - [data-testid="stSidebarNav"] a:hover) Tj
+T*
+(  - [data-testid="stSidebarNav"] a[aria-current="page"]) Tj
+T*
+(  - [data-testid="stSidebarNav"] a[aria-current="page"] span) Tj
+T*
+(  - .brand) Tj
+T*
+(  - .brand-logo) Tj
+T*
+(  - .brand-name) Tj
+T*
+(  - .brand-tag) Tj
+T*
+(  - .hero) Tj
+T*
+(  - .hero::after) Tj
+T*
+(  - .hero-title) Tj
+T*
+(  - .hero-sub) Tj
+T*
+(  - .kpi) Tj
+T*
+(  - .kpi:hover) Tj
+T*
+(  - .kpi::before) Tj
+T*
+(  - .kpi-top) Tj
+T*
+(  - .kpi-label) Tj
+T*
+(  - .kpi-icon) Tj
+T*
+(  - .kpi-value) Tj
+T*
+(  - .kpi-note) Tj
+T*
+(  - .kpi.green) Tj
+T*
+(  - .kpi.red) Tj
+T*
+(  - .kpi.blue) Tj
+T*
+(  - .kpi.amber) Tj
+T*
+(  - .kpi.teal) Tj
+T*
+(  - [data-testid="stMetric"]) Tj
+T*
+(  - [data-testid="stMetricLabel"]) Tj
+T*
+(  - [data-testid="stMetricValue"]) Tj
+T*
+(  - .section-title) Tj
+T*
+(  - .section-title::after) Tj
+T*
+(  - .badge) Tj
+T*
+(  - .badge.green) Tj
+T*
+(  - .badge.red) Tj
+T*
+(  - .badge.gray) Tj
+T*
+(  - [data-testid="stPlotlyChart"], [data-testid="stDataFrame"]) Tj
+T*
+(  - [data-testid="stForm"]) Tj
+T*
+(  - .stTabs [data-baseweb="tab-list"]) Tj
+T*
+(  - .stTabs [data-baseweb="tab"]) Tj
+T*
+(  - .stTabs [aria-selected="true"]) Tj
+T*
+(  - .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"]) Tj
+T*
+(  - .stButton > button, .stDownloadButton > button, [data-testid="stFormSubmitButton"] > button) Tj
+T*
+(  - .stButton > button:hover, .stDownloadButton > button:hover, [data-testid="stFormSubmitButton"] >) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 9 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+15 0 obj
+<< /Length 3385 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(    button:hover) Tj
+T*
+(  - .stButton > button:disabled, .stDownloadButton > button:disabled) Tj
+T*
+(  - div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="base-input"]) Tj
+T*
+(  - div[data-baseweb="input"]:focus-within, div[data-baseweb="select"] > div:focus-within) Tj
+T*
+(  - [data-testid="stAlert"]) Tj
+T*
+(  - [data-testid="stExpander"]) Tj
+T*
+(  - hr) Tj
+T*
+(  - ::-webkit-scrollbar) Tj
+T*
+(  - ::-webkit-scrollbar-thumb) Tj
+T*
+/F1 9 Tf
+(... and 63 more selectors.) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/auth.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Demo authentication helpers for the Banking Transaction Analysis app.) Tj
+T*
+/F1 9 Tf
+(Imports: __future__, hmac, streamlit) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - is_authenticated\(\) - Return True when a demo user has signed in for this session.) Tj
+T*
+(  - current_user\(\)) Tj
+T*
+(  - logout\(\)) Tj
+T*
+(  - attempt_login\(username, password, selected_role\) - Validate a demo account and start an) Tj
+T*
+(    authenticated session.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/components/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/components/charts.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Plotly chart builders \(MEMBER 4\). Each function takes a DataFrame and returns a figure.) Tj
+T*
+/F1 9 Tf
+(Imports: plotly) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _style\(figure\) - Apply the shared look \(fonts, transparent background, soft grid\) to every) Tj
+T*
+(    chart.) Tj
+T*
+(  - _empty_figure\(title\)) Tj
+T*
+(  - monthly_expense_chart\(monthly_expense_df\) - Bar chart of expenses per month \(columns: month,) Tj
+T*
+(    expense\).) Tj
+T*
+(  - income_vs_expense_chart\(summary_df\) - Grouped bars: income and expense for every month) Tj
+T*
+(    \(columns: month, income, expense\).) Tj
+T*
+(  - category_pie_chart\(category_df\) - Donut chart of spending per category \(columns: category,) Tj
+T*
+(    expense\).) Tj
+T*
+(  - category_bar_chart\(category_df\) - Horizontal bar chart of spending per category.) Tj
+T*
+(  - monthly_net_chart\(summary_df\) - Line chart of the net amount \(income - expense\) per month.) Tj
+T*
+(  - account_comparison_chart\(account_df\) - Income vs expense of every account \(columns:) Tj
+T*
+(    account_number, income, expense\).) Tj
+T*
+(  - amount_histogram\(df\) - Histogram showing how transaction amounts are spread.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/components/tables.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Shared Streamlit widgets: tables, filters, error handling \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, backend, datetime, pandas, streamlit, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - run_safely\(function\) - Call a backend function; show a friendly message instead of crashing.) Tj
+T*
+(  - records_to_df\(records\) - List of dicts from the backend -> DataFrame \(Decimal money values) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 10 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+16 0 obj
+<< /Length 3097 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(    become floats\).) Tj
+T*
+(  - show_table\(df, money_columns\) - Show a DataFrame as a nice full-width table with Rs.) Tj
+T*
+(    formatting.) Tj
+T*
+(  - show_chart\(figure, key\) - Draw a Plotly figure at full width \(works on old and new Streamlit) Tj
+T*
+(    versions\).) Tj
+T*
+(  - show_money\(label, amount\)) Tj
+T*
+(  - account_options\(only_active\) - {label: account_id} for dropdowns.) Tj
+T*
+(  - transaction_filters\(container, key_prefix\) - Draw Account / Date range / Type / Category) Tj
+T*
+(    filters inside `container`) Tj
+T*
+(  - unusual_settings\(container, key_prefix\) - Configurable thresholds for the unusual-transaction) Tj
+T*
+(    rules. Returns keyword arguments.) Tj
+T*
+(  - show_unusual_transactions\(flagged_df\) - Show alerts for flagged transactions \(used on the) Tj
+T*
+(    dashboard and analysis page\).) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/landing.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Public landing page shown before the demo login portal.) Tj
+T*
+/F1 9 Tf
+(Imports: __future__, dashboard, html, streamlit) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _stats_html\(\)) Tj
+T*
+(  - _feature_card\(icon, title, text\)) Tj
+T*
+(  - render\(\) - Render the public landing page with a button to the separate login portal.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/login.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Separate demo login portal for the Banking Transaction Analysis app.) Tj
+T*
+/F1 9 Tf
+(Imports: __future__, dashboard, streamlit) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _tame_password_manager\(\) - Stop browsers from offering to generate a new strong password on) Tj
+T*
+(    login.) Tj
+T*
+(  - render\(\) - Render a plain username/password login page.) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/accounts.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Account management page \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, dashboard, pandas, streamlit, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - render\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/analysis.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Analysis page: statistics, monthly, category, income vs expense, unusual \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, dashboard, streamlit, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - render\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/customers.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Customer management page \(MEMBER 4\).) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 11 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+17 0 obj
+<< /Length 2524 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F1 9 Tf
+(Imports: backend, dashboard, streamlit) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _customer_label\(customer\)) Tj
+T*
+(  - render\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/dashboard.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Main dashboard page: KPI cards, charts, recent transactions, alerts \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, backend, dashboard, streamlit, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - render\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/reports.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Report page: preview and CSV download \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Imports: analysis, dashboard, streamlit) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - render\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/pages/transactions.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Transaction management page: view/search/filter, add, edit, delete \(MEMBER 4\).) Tj
+T*
+/F1 9 Tf
+(Imports: backend, dashboard, datetime, streamlit, utils) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - _view_tab\(\)) Tj
+T*
+(  - _add_tab\(\)) Tj
+T*
+(  - _edit_tab\(\)) Tj
+T*
+(  - render\(\)) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(dashboard/theme.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Member 4 - UI + Visualization) Tj
+T*
+/F1 10 Tf
+(Purpose: Theme helpers: loads the custom CSS and renders small HTML components.) Tj
+T*
+/F1 9 Tf
+(Imports: html, pathlib, streamlit) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - apply_theme\(\) - Inject the custom stylesheet and the sidebar brand block. Call once in app.py.) Tj
+T*
+(  - page_header\(icon, title, subtitle\) - Gradient hero banner shown at the top of every page.) Tj
+T*
+(  - section_title\(icon, text\)) Tj
+T*
+(  - kpi_card\(label, value, icon, tone, note\) - HTML KPI card. tone: teal | green | red | blue |) Tj
+T*
+(    amber.) Tj
+T*
+() Tj
+T*
+/F2 15 Tf
+(Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(.gitignore) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: file asset.) Tj
+T*
+(  - # secrets) Tj
+T*
+(  - .env) Tj
+T*
+(  - # python) Tj
+T*
+(  - venv/) Tj
+T*
+(  - .venv/) Tj
+T*
+(  - __pycache__/) Tj
+T*
+(  - *.pyc) Tj
+T*
+(  - .pytest_cache/) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 12 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+18 0 obj
+<< /Length 1992 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+() Tj
+T*
+/F2 11 Tf
+(README.md) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: Markdown documentation.) Tj
+T*
+/F2 10 Tf
+(Sections:) Tj
+T*
+/F1 10 Tf
+(  - Banking Transaction Analysis System) Tj
+T*
+(  -   Features) Tj
+T*
+(  -   Technology stack) Tj
+T*
+(  -   Architecture) Tj
+T*
+(  -   Database structure) Tj
+T*
+(  -   Folder structure) Tj
+T*
+(  -   Team responsibilities) Tj
+T*
+(  -   Installation) Tj
+T*
+(  -     1. MySQL) Tj
+T*
+(  -     2. Create the database with SQLyog) Tj
+T*
+(  -     3. Python environment) Tj
+T*
+(  - Windows \(Command Prompt\)) Tj
+T*
+(  - Windows \(PowerShell\)) Tj
+T*
+(  - macOS / Linux) Tj
+T*
+(  -     4. Configure `.env`) Tj
+T*
+(  - Windows) Tj
+T*
+(  - macOS / Linux) Tj
+T*
+(  -   How to run) Tj
+T*
+(  -     Demo login accounts) Tj
+T*
+(  -   How to use the dashboard) Tj
+T*
+(  -   Unusual transaction detection \(rules\)) Tj
+T*
+(  -   Git workflow) Tj
+T*
+(  - open a Pull Request on GitHub -> review -> merge into main) Tj
+T*
+(  -   Testing) Tj
+T*
+(  -   Future improvements) Tj
+T*
+(  -   Limitations) Tj
+T*
+(  -   Theme / customising the look) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(docs/architecture.md) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: Markdown documentation.) Tj
+T*
+/F2 10 Tf
+(Sections:) Tj
+T*
+/F1 10 Tf
+(  - Architecture) Tj
+T*
+(  -   Rules) Tj
+T*
+(  -   Key design decisions) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(docs/database_design.md) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: Markdown documentation.) Tj
+T*
+/F2 10 Tf
+(Sections:) Tj
+T*
+/F1 10 Tf
+(  - Database design \(banking_db\)) Tj
+T*
+(  -   Entities and relationships) Tj
+T*
+(  -   customers) Tj
+T*
+(  -   accounts) Tj
+T*
+(  -   transactions) Tj
+T*
+(  -   Normalization) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(docs/file_function_review.pdf) Tj
+T*
+/F1 10 Tf
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 13 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+19 0 obj
+<< /Length 2459 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: .pdf asset.) Tj
+T*
+(  - %PDF-1.4) Tj
+T*
+(  - 6 0 obj) Tj
+T*
+(  - << /Length 3104 >>) Tj
+T*
+(  - stream) Tj
+T*
+(  - BT) Tj
+T*
+(  - /F1 10 Tf) Tj
+T*
+(  - 1 0 0 1 50 742 Tm) Tj
+T*
+(  - 13 TL) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(docs/project_workflow.md) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: Markdown documentation.) Tj
+T*
+/F2 10 Tf
+(Sections:) Tj
+T*
+/F1 10 Tf
+(  - Project workflow \(Git + GitHub\)) Tj
+T*
+(  -   Branches) Tj
+T*
+(  -   One-time setup \(Member 1\)) Tj
+T*
+(  -   Everyone else) Tj
+T*
+(  -   Keeping your branch up to date) Tj
+T*
+(  -   How Member 1 integrates the branches) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(docs/team_roles.md) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: Markdown documentation.) Tj
+T*
+/F2 10 Tf
+(Sections:) Tj
+T*
+/F1 10 Tf
+(  - Team roles) Tj
+T*
+(  -   Interfaces between members) Tj
+T*
+() Tj
+T*
+/F2 11 Tf
+(tests/__init__.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+/F1 9 Tf
+(No top-level functions or classes \(module-level code only\).) Tj
+T*
+/F1 10 Tf
+() Tj
+T*
+/F2 11 Tf
+(tests/conftest.py) Tj
+T*
+/F1 10 Tf
+/F2 9 Tf
+(Owner: Shared \(all members\)) Tj
+T*
+/F1 10 Tf
+(Purpose: Shared pytest setup. Database tests are skipped automatically when MySQL is not) Tj
+T*
+(reachable.) Tj
+T*
+/F1 9 Tf
+(Imports: pathlib, pytest, sys, uuid) Tj
+T*
+/F1 10 Tf
+/F2 10 Tf
+(Functions:) Tj
+T*
+/F1 10 Tf
+(  - unique_phone\(\)) Tj
+T*
+(  - unique_email\(\)) Tj
+T*
+(  - require_database\(\)) Tj
+T*
+(  - customer_id\(require_database\) - A temporary customer that is removed \(with its) Tj
+T*
+(    accounts/transactions\) after the test.) Tj
+T*
+(  - account_id\(customer_id\) - A SAVINGS account with an opening balance of 1000.) Tj
+T*
+() Tj
+T*
+/F2 14 Tf
+(Notes for review) Tj
+T*
+/F1 10 Tf
+(  - Member 1 owns backend services, utilities, tests for transactions/validators, requirements and) Tj
+T*
+(    final merge.) Tj
+T*
+(  - Member 2 owns database schema, sample data and database tests.) Tj
+T*
+(  - Member 3 owns analysis modules and analysis tests.) Tj
+T*
+(  - Member 4 owns Streamlit dashboard, pages, charts and login/landing UI.) Tj
+T*
+(  - Shared files \(docs, README, tests helpers\) are reviewed by all members.) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 14 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+20 0 obj
+<< /Length 263 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 50 742 Tm
+13 TL
+(  - The final ZIP excludes .venv, .env and caches; .env must be created locally from .env.example.) Tj
+T*
+ET
+BT /F1 8 Tf 1 0 0 1 50 35 Tm (Page 15 of 15  |  Banking Transaction Analysis System - File & Function Review) Tj ET
+
+endstream
+endobj
+2 0 obj
+<< /Type /Pages /Kids [21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R 35 0 R] /Count 15 >>
+endobj
+
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 7 0 R >>
+endobj
+
+23 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 8 0 R >>
+endobj
+
+24 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 9 0 R >>
+endobj
+
+25 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 10 0 R >>
+endobj
+
+26 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 11 0 R >>
+endobj
+
+27 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 12 0 R >>
+endobj
+
+28 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 13 0 R >>
+endobj
+
+29 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 14 0 R >>
+endobj
+
+30 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 15 0 R >>
+endobj
+
+31 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 16 0 R >>
+endobj
+
+32 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 17 0 R >>
+endobj
+
+33 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 18 0 R >>
+endobj
+
+34 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 19 0 R >>
+endobj
+
+35 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 20 0 R >>
+endobj
+
+xref
+0 35
+0000000000 65535 f 
+0000000009 00000 n 
+0000002621 00000 n 
+0000006219 00000 n 
+0000010049 00000 n 
+0000013102 00000 n 
+0000016040 00000 n 
+0000019389 00000 n 
+0000022628 00000 n 
+0000025668 00000 n 
+0000027788 00000 n 
+0000031226 00000 n 
+0000034376 00000 n 
+0000036953 00000 n 
+0000038998 00000 n 
+0000041510 00000 n 
+0000041825 00000 n 
+0000041983 00000 n 
+0000042033 00000 n 
+0000042104 00000 n 
+0000042180 00000 n 
+0000042318 00000 n 
+0000042456 00000 n 
+0000042594 00000 n 
+0000042732 00000 n 
+0000042871 00000 n 
+0000043010 00000 n 
+0000043149 00000 n 
+0000043288 00000 n 
+0000043427 00000 n 
+0000043566 00000 n 
+0000043705 00000 n 
+0000043844 00000 n 
+0000043983 00000 n 
+0000044122 00000 n 
+trailer
+<< /Size 35 /Root 1 0 R >>
+startxref
+44261
+%%EOF
