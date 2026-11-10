@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Banking Transaction Analysis System
 
 A college project: a modular Python + MySQL application to manage customers, accounts and
@@ -194,3 +195,7 @@ based anomaly detection, Docker setup.
 * `dashboard/theme.py` - HTML helpers: `page_header()`, `kpi_card()`, `section_title()`.
 * `.streamlit/config.toml` - Streamlit's base theme colours.
 * `dashboard/components/charts.py` - shared Plotly styling in `_style()` and `PALETTE`.
+=======
+# Banking-Transaction-Analysis
+Banking Transaction Analysis System is a Python-based project designed to analyze banking transactions, track income and expenses, identify transaction patterns, and generate useful insights through data analysis and visualization. It helps users understand their financial activities and manage transactions efficiently.
+>>>>>>> origin/main
